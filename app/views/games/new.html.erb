@@ -1,0 +1,20 @@
+<!-- Display 10 random letters -->
+<h1>New Game</h1>
+
+<!-- Display letter cards -->
+<div class="card-container">
+  <% @letters.each do |letter| %>
+    <div class="letter-card"><%= letter %></div>
+  <%end%>
+</div>
+
+<!-- Enter a word -->
+<form action="score" method="post">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <%= hidden_field_tag :letters, @letters %>
+  <label for="word-input">What is the longest word you can find?</label>
+  <div class="user-input">
+    <input type="text" name="guess" id="word-input">
+    <input type="submit" value="Play" id="submit-btn">
+  </div>
+</form>
